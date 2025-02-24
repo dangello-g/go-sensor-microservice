@@ -8,7 +8,7 @@ This microservice generates real-time simulated IoT sensor data and streams it v
 
 ## Features
 
--Simulated Sensor Data: Generates real-time humidity and light intensity data for testing and development purposes.
+- Simulated Sensor Data: Generates real-time humidity and light intensity data for testing and development purposes.
 - WebSocket Streaming: Streams sensor data to connected clients via WebSockets, enabling real-time data consumption.
 
 ## Planned Features
