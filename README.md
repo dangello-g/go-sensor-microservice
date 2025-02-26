@@ -10,13 +10,14 @@ This microservice generates real-time simulated IoT sensor data and streams it v
 
 - Simulated Sensor Data: Generates real-time humidity and light intensity data for testing and development purposes.
 - WebSocket Streaming: Streams sensor data to connected clients via WebSockets, enabling real-time data consumption.
+- Threshold-Based Actions: Implement a WebSocket-based mechanism where the frontend sends messages when sensor readings exceed predefined thresholds. The backend will manage these events and trigger appropriate.
 
 ## Planned Features
 
 - InfluxDB Integration: Stores simulated sensor data in InfluxDB, a high-performance time series database, facilitating efficient data storage and retrieval.
 - Kafka Integration: Implement a Kafka producer to publish sensor data, enabling event-driven architectures and decoupled data pipelines.
 - Improved Fault Tolerance: Implement automatic reconnection, data buffering, and retry mechanisms for a more resilient system.
-- Modular Architecture: Refactor the codebase for easy extension, allowing additional sensor types and processing modules.
+- Modular Architecture: Refactor the codebase for easy extension, allowing additional sensor types and processing modules.actions, such as activating devices in response to humidity or light intensity levels.
 - Threshold-Based Actions: Implement a WebSocket-based mechanism where the frontend sends messages when sensor readings exceed predefined thresholds. The backend will manage these events and trigger appropriate actions, such as activating devices in response to humidity or light intensity levels.
 
 ## Technology Stack
