@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"math/rand"
 	"net/http"
@@ -38,11 +39,22 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 	clients[ws] = true
 
 	for {
-		_, _, err := ws.ReadMessage()
+		_, message, err := ws.ReadMessage()
 		if err != nil {
 			log.Printf("Error reading message: %v", err)
 			delete(clients, ws)
 			break
+		}
+
+		var receivedData SensorData
+		if err := json.Unmarshal(message, &receivedData); err != nil {
+			log.Printf("Invalid JSON format: %v", err)
+			continue
+		}
+
+		responseMessage := fmt.Sprintf("Received sensor data: %s with a value of %.2f at %s", receivedData.Type, receivedData.Value, receivedData.Timestamp)
+		if err := ws.WriteMessage(websocket.TextMessage, []byte(responseMessage)); err != nil {
+			log.Printf("Error sending message: %v", err)
 		}
 	}
 }
